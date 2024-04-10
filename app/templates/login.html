@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+{% block content %}
+    <form name="formPainel" id="formPainel" method="post" action="/dologin/" class="login-form" >
+
+        
+
+        <div class="login-container">
+
+            {% if msg %}
+                <div class="alert {{class}}">
+                    {{msg}}
+                </div>
+            {% endif %}
+            {%csrf_token%}
+            <input type="text" name="user" id="user" placeholder="Usuário:" required>
+            <input type="password" name="password" id="password" placeholder="Senha:" required>
+            <input type="submit" value="Entrar" >
+            <a href="#">Esqueceu a senha?</a>
+            <span>ou</span>
+            <a href="/create">Criar uma conta</a>
+        </div>
+    </form>
+{% endblock content %}
