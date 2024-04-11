@@ -1,10 +1,12 @@
 {% extends 'main.html' %}
 {% block content %}
     {% if request.user.is_authenticated%}
-    <h1>Area Restrita</h1>
     <br>
-    <a href="/logouts/">Sair</a>
-    <a href="/redmudarsenha/">Trocar senha</a>
+    <a class="btn btn-primary" href="#" role="button">Direção</a>
+    <a class="btn btn-primary" href="{% url 'list_docente' %}" role="button">Docente</a>
+    <a class="btn btn-primary" href="#" role="button">Aluno(a)</a>
+    <a class="btn btn-primary" href="#" role="button">Disciplina</a>
+    <a class="btn btn-primary" href="#" role="button">Turma</a>
     {%else%}
     Voce não tem acesso a essa area
     {%endif%}

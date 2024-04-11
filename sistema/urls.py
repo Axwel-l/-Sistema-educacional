@@ -22,11 +22,21 @@ Including another URLconf
 # ]
 from django.contrib import admin
 from django.urls import path
-from app.views import mudarsenha, dashboard, home,create, redmudarsenha,store,login,dologin,logouts
+from app.dologin import dologin
+from app.views import mudarsenha, dashboard, home,create, redmudarsenha,store,login,logouts
 
+
+
+from app.views import (
+    CriarDocente,
+    ListDocenteView,
+    DetailDocente,
+    UpdateDocente,
+    DeleteDocente,
+)
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',home),
+    path('',login),
     path('create/',create),
     path('store/',store),
     path('login/',login),
@@ -34,6 +44,13 @@ urlpatterns = [
     path('dashboard/',dashboard),
     path('logouts/',logouts),
     path('mudarsenha/',mudarsenha),
-    path('redChangePassword/',redmudarsenha),
-    
+    path('redmudarsenha/',redmudarsenha),
+
+
+    path('docente/add',CriarDocente.as_view(),name='create_docente'),
+    path('docente',ListDocenteView.as_view(),name='list_docente'),
+    path('docente/<int:pk>',DetailDocente.as_view(),name='docente_detail'),
+    path('docente/<int:pk>/update',UpdateDocente.as_view(),name='docente_update'),
+    path('docente/<int:pk>/delete',DeleteDocente.as_view(),name='docente_delete'),
+
 ]

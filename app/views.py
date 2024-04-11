@@ -1,8 +1,15 @@
 # Create your views here.
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
-from django.contrib.auth import  authenticate,login,logout
+from django.contrib.auth import  logout
 
+from django.urls import reverse_lazy
+from django.views.generic.edit import (
+    CreateView,
+    UpdateView,
+    DeleteView
+    )
+from django.views.generic import  ListView, DetailView
 # Create your views here.
 #Página inicial
 def home (request):
@@ -28,16 +35,6 @@ def store (request):
 def  login(request):
     return render(request,'login.html')
 #Processa o login
-def dologin (request):
-    data={}
-    user = authenticate(username=request.POST['user'],password=request.POST['password'])
-    if user is not None:
-        login(request,user)
-        return redirect('/dashboard/')
-    else:
-        data['msg'] = 'Usuario ou senha invalidos'
-        data['class']='alert-danger'
-        return render(request,'painel.html',data)
 #Pagina inicial do dashboard
 def  dashboard(request):
     return render(request,'dashboard/home.html')
@@ -53,4 +50,40 @@ def mudarsenha(request):
     user.set_password(request.POST['password'])
     user.save()
     logout(request)
-    return redirect('/painel/')
+    return redirect('/login/')
+
+
+from .models import Docente
+# def docente(request):
+#     if request.method == 'POST':
+#         form = DocenteForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('home')
+#     else:
+#         form = DocenteForm()
+#     return render(request, 'docente.html', {'form': form})
+
+class CriarDocente( CreateView):
+    model=Docente
+    fields=('nome','cpf','data_nascimento','email')
+    template_name= 'docenteadd.html'
+    success_url = reverse_lazy('list_docente')
+class ListDocenteView(ListView):
+    model = Docente
+    template_name = 'dashboard/docente.html'
+    context_object_name='docente'
+
+class DetailDocente(DetailView):
+    model = Docente
+    template_name= 'docente_detail.html'
+
+class UpdateDocente(UpdateView):
+    model =Docente
+    template_name= 'docente_update.html'
+    fields = ('nome', 'cpf', 'email', 'data_nascimento')
+    success_url = reverse_lazy('list_docente')
+class DeleteDocente( DeleteView):
+    model =Docente
+    template_name='docente_delete.html'
+    success_url = reverse_lazy('list_docente')
