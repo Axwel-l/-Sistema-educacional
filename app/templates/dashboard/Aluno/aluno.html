@@ -1,0 +1,56 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<h4>Aluno 
+    &nbsp;|&nbsp;
+    <a href="{% url 'create_aluno' %}"> Incluir</a>
+    </h4>
+
+    <form method="GET" action="{% url 'pesquisar' %}">
+        <input type="text" name="q" placeholder="Pesquisar...">
+        <button type="submit">Pesquisar</button>
+    </form>
+    {% if query %}    
+        {% if resultados %}
+            <h2>Resultados para "{{ query }}":</h2>
+            <ul>
+                {% for aluno in resultados %}
+                    <li>
+                        {{aluno.nome}}
+                        &nbsp;|&nbsp;
+                        {{aluno.cpf}}
+                        &nbsp;|&nbsp;
+                        {{aluno.data_nascimento}}
+                        &nbsp;|&nbsp;
+                        <a href="{% url 'aluno_detail' aluno.id %}"> Detalhes</a>
+                        
+                        &nbsp;|&nbsp;
+                        <a href="{% url 'aluno_update' aluno.id %}"> Editar</a>
+        
+                        &nbsp;|&nbsp;
+                        <a href="{% url 'aluno_delete' aluno.id %}"> Excluir</a>
+                    </li>
+
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Nenhum resultado encontrado para "{{ query }}".</p>
+        {% endif %}
+    {% endif %}
+    <ul>
+        {% for aluno in alunos %}
+            <li>
+                {{aluno.nome}}
+                &nbsp;|&nbsp;
+                {{aluno.cpf}}
+                &nbsp;|&nbsp;
+                {{aluno.data_nascimento}}
+                &nbsp;|&nbsp;
+                <a href="{% url 'aluno_update' aluno.id %}"> Editar</a>
+
+                &nbsp;|&nbsp;
+                <a href="{% url 'aluno_delete' aluno.id %}"> Excluir</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -23,17 +23,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from app.dologin import dologin
-from app.views import mudarsenha, dashboard, home,create, redmudarsenha,store,login,logouts
+from app.views import *
 
-
-
-from app.views import (
-    CriarDocente,
-    ListDocenteView,
-    DetailDocente,
-    UpdateDocente,
-    DeleteDocente,
-)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',login),
@@ -47,10 +38,23 @@ urlpatterns = [
     path('redmudarsenha/',redmudarsenha),
 
 
+
     path('docente/add',CriarDocente.as_view(),name='create_docente'),
     path('docente',ListDocenteView.as_view(),name='list_docente'),
     path('docente/<int:pk>',DetailDocente.as_view(),name='docente_detail'),
     path('docente/<int:pk>/update',UpdateDocente.as_view(),name='docente_update'),
     path('docente/<int:pk>/delete',DeleteDocente.as_view(),name='docente_delete'),
+    path('pesquisar/',pesquisardocente, name='pesquisar'),
+
+
+
+    path('aluno/add',CriarAluno.as_view(),name='create_aluno'),
+    path('aluno',ListAluno.as_view(),name='list_aluno'),
+    path('aluno/<int:pk>',DetailAluno.as_view(),name='aluno_detail'),
+    path('aluno/<int:pk>/update',UpdateAluno.as_view(),name='aluno_update'),
+    path('aluno/<int:pk>/delete',DeleteAluno.as_view(),name='aluno_delete'),
+    path('pesquisar/',pesquisaraluno, name='pesquisar'),
+    
+    
 
 ]

@@ -1,0 +1,20 @@
+{% extends 'main.html'%}
+
+{% block title %}
+    Categorias
+{% endblock title %}
+{% block content %}
+    <h4>Docente:{{object.nome}}</h4>
+    <p>ID: {{object.id}}</p>
+    <p>Data de Nasciemnto:{{object.data_nascimento}}</p>
+    <p>CPF: {{object.cpf}}</p>
+    <p>E-mail: {{objetc.email}}</p>
+
+    <a href="{% url 'docente_update' docente.id %}"> Editar</a>
+    &nbsp;|&nbsp;
+    <a href="{% url 'docente_update' docente.id %}"> Excluir</a>
+    
+{% endblock content %}
+
+{% block footer %}
+{% endblock footer %}
