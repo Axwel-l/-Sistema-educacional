@@ -31,3 +31,16 @@ class Aluno(models.Model):
             self.nome = self.nome.upper()
         
         super(Aluno,self).save(*args,**kwargs)
+
+class Disciplina(models.Model):
+    nome = models.CharField(
+        unique=True,
+        max_length=80,
+    )
+    data_criacao = models.DateField()
+
+    def save(self, *args, **kwargs):
+        if self.pk is None:
+            self.nome = self.nome.upper()
+        
+        super(Disciplina,self).save(*args,**kwargs)

@@ -1,11 +1,9 @@
-{% extends 'main.html' %}
+{% extends 'main.html'%}
 
 {% block content %}
-
-<h4>Adcionar aluno</h4>
-    <form action="" method="post">
+    <form method="post">
         {% csrf_token %}
         {{form.as_p}}
         <button type="submit">Salvar</button>
     </form>
-{% endblock %}
+{% endblock content %}

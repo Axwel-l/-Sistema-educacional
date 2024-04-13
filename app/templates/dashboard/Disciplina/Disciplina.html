@@ -1,9 +1,9 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<h4>Aluno 
+<h4>Disciplina
     &nbsp;|&nbsp;
-    <a href="{% url 'create_aluno' %}"> Incluir</a>
+    <a href="{% url 'create_disciplina' %}"> Incluir</a>
     </h4>
 
     <form method="GET" action="{% url 'pesquisar' %}">
@@ -14,18 +14,16 @@
         {% if resultados %}
             <h2>Resultados para "{{ query }}":</h2>
             <ul>
-                {% for aluno in resultados %}
+                {% for disciplina in resultados %}
                     <li>
-                        {{aluno.nome}}
+                        {{disciplina.nome}}
                         &nbsp;|&nbsp;
-                        {{aluno.cpf}}
+                        {{disciplina.data_criacao}}
                         &nbsp;|&nbsp;
-                        {{aluno.data_nascimento}}
-                        &nbsp;|&nbsp;
-                        <a href="{% url 'aluno_update' aluno.id %}"> Editar</a>
+                        <a href="{% url 'disciplina_update' disciplina.id %}"> Editar</a>
         
                         &nbsp;|&nbsp;
-                        <a href="{% url 'aluno_delete' aluno.id %}"> Excluir</a>
+                        <a href="{% url 'disciplina_delete' disciplina.id %}"> Excluir</a>
                     </li>
 
                 {% endfor %}
@@ -35,18 +33,16 @@
         {% endif %}
     {% endif %}
     <ul>
-        {% for aluno in alunos %}
+        {% for disciplina in disciplinas %}
             <li>
-                {{aluno.nome}}
+                {{disciplina.nome}}
                 &nbsp;|&nbsp;
-                {{aluno.cpf}}
+                {{disciplina.data_criacao}}
                 &nbsp;|&nbsp;
-                {{aluno.data_nascimento}}
-                &nbsp;|&nbsp;
-                <a href="{% url 'aluno_update' aluno.id %}"> Editar</a>
+                <a href="{% url 'disciplina_update' disciplina.id %}"> Editar</a>
 
                 &nbsp;|&nbsp;
-                <a href="{% url 'aluno_delete' aluno.id %}"> Excluir</a>
+                <a href="{% url 'disciplina_delete' disciplina.id %}"> Excluir</a>
             </li>
         {% endfor %}
     </ul>

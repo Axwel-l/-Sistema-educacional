@@ -52,14 +52,17 @@ def mudarsenha(request):
     logout(request)
     return redirect('/login/')
 
-from .models import Aluno, Docente
+from .models import Aluno, Docente, Disciplina
+FAluno = Aluno
+FDocente=Docente
+FDisciplina=Disciplina
 
 
 def minha_view(request):
     form1 = Aluno()
     form2 = Docente()
     return render(request, 'dashboard/home.html', {'form1': form1, 'form2': form2})
-
+# Docente
 class CriarDocente( CreateView):
     model=Docente
     fields=('nome','cpf','data_nascimento','email')
@@ -69,10 +72,6 @@ class ListDocenteView(ListView):
     model = Docente
     template_name = 'dashboard/Docente/docente.html'
     context_object_name='docentes'
-
-class DetailDocente(DetailView):
-    model = Docente
-    template_name= 'dashboard/Docente/docente_detail.html'
 
 class UpdateDocente(UpdateView):
     model =Docente
@@ -91,7 +90,7 @@ def pesquisardocente(request):
     
 
 
-
+# Aluno
 class CriarAluno( CreateView):
     model=Aluno
     fields=('nome','cpf','data_nascimento','email')
@@ -102,14 +101,10 @@ class ListAluno(ListView):
     template_name = 'dashboard/Aluno/aluno.html'
     context_object_name='alunos'
 
-class DetailAluno(DetailView):
-    model = Aluno
-    template_name= 'dashboard/Aluno/aluno_detail.html'
-
 class UpdateAluno(UpdateView):
     model =Aluno
     template_name= 'dashboard/Aluno/aluno_update.html'
-    fields = ('nome', 'cpf', 'email', 'data_nascimento')
+    fields=('nome','cpf','data_nascimento','email')
     success_url = reverse_lazy('list_aluno')
 class DeleteAluno( DeleteView):
     model =Aluno
@@ -120,3 +115,33 @@ def pesquisaraluno(request):
     query = request.GET.get('q')
     resultados = Aluno.objects.filter(nome__icontains=query)
     return render(request, 'dashboard/Aluno/aluno.html', {'resultados': resultados, 'query': query})
+
+
+
+
+
+# Disciplina
+class CriarDisciplina( CreateView):
+    model=Disciplina
+    fields=('nome','data_criacao')
+    template_name= 'dashboard/Disciplina/Dadd.html'
+    success_url = reverse_lazy('list_disciplina')
+class ListDisciplina(ListView):
+    model = Disciplina
+    template_name = 'dashboard/Disciplina/Disciplina.html'
+    context_object_name='disciplinas'
+
+class UpdateDisciplina(UpdateView):
+    model =Disciplina
+    template_name= 'dashboard/Disciplina/D_update.html'
+    fields = ('nome','data_nascimento')
+    success_url = reverse_lazy('list_disciplina')
+class DeleteDisciplina( DeleteView):
+    model =Disciplina
+    template_name='dashboard/Disciplina/D_delete.html'
+    success_url = reverse_lazy('list_disciplina')
+
+def pesquisardisciplina(request):
+    query = request.GET.get('q')
+    resultados = Disciplina.objects.filter(nome__icontains=query)
+    return render(request, 'dashboard/Disciplina/disciplina.html', {'resultados': resultados, 'query': query})
