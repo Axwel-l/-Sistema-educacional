@@ -1,42 +1,42 @@
 #Sistema Educaciona<br>
-Breve descrição ou objetivo do projeto.
+Breve descrição ou objetivo do projeto.<br>
 
-Instalação
-1. Clone o repositório
+Instalação<br>
+1. Clone o repositório<br>
 
-git clone Axwel-l/-Sistema-educacional
-
-
-2. Crie um ambiente virtual(Não Obrigatorio)
-É altamente recomendável usar um ambiente virtual para manter suas dependências Python isoladas. Você pode criar um ambiente virtual usando o venv.
-*python -m venv venv
-
-3. Ative o ambiente virtual:
-*/venv\Scripts\Activate.ps1
-
-4. Instale as dependências
-*pip install -r requirements.txt
+git clone Axwel-l/-Sistema-educacional<br>
 
 
-##Configuração
-1. Banco de Dados
-Edite o arquivo settings.py no diretório sistema e ajuste as configurações do banco de dados de acordo com o que for usar (no caso é o postegres, em que sera necessario intalar as extensões do banco que deseja usar ):
+2. Crie um ambiente virtual(Não Obrigatorio)<br>
+É altamente recomendável usar um ambiente virtual para manter suas dependências Python isoladas. Você pode criar um ambiente virtual usando o venv.<br>
+*python -m venv venv<br>
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'escola',
-        'USER':'postgres',
-        'PASSWORD':'admin',
-        'HOST':'localhost',
-    }
-}
+3. Ative o ambiente virtual:<br>
+*/venv\Scripts\Activate.ps1<br>
 
-2. Migrar o Banco de Dados
-Depois de configurar o banco de dados, você precisa aplicar as migrações:
+4. Instale as dependências<br>
+*pip install -r requirements.txt<br>
 
-*python manage.py makemigrations
-*python manage.py migrate
+<br>
+##Configuração<br>
+1. Banco de Dados<br>
+Edite o arquivo settings.py no diretório sistema e ajuste as configurações do banco de dados de acordo com o que for usar (no caso é o postegres, em que sera necessario intalar as extensões do banco que deseja usar ):<br>
 
-Este é um sistema de Direção de uma Escola.
--Incompleto até o momento
+DATABASES = {<br>
+    'default': {<br>
+        'ENGINE': 'django.db.backends.postgresql',<br>
+        'NAME': 'escola',<br>
+        'USER':'postgres',<br>
+        'PASSWORD':'admin',<br>
+        'HOST':'localhost',<br>
+    }<br>
+}<br>
+
+2. Migrar o Banco de Dados<br>
+Depois de configurar o banco de dados, você precisa aplicar as migrações:<br>
+
+*python manage.py makemigrations<br>
+*python manage.py migrate<br>
+
+Este é um sistema de Direção de uma Escola.<br>
+-Incompleto até o momento<br>
