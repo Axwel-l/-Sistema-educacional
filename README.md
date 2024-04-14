@@ -1,6 +1,8 @@
 #Sistema Educaciona<br>
 Breve descrição ou objetivo do projeto.<br>
 
+Documentação: https://docs.google.com/document/d/1l894b6Cls8oUemLG2Rr-GiRjx6chY9aiURKg06vLYy0/edit?usp=sharing
+
 Instalação<br>
 1. Clone o repositório<br>
 
