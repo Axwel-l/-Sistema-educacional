@@ -43,7 +43,7 @@ urlpatterns = [
     path('docente',ListDocenteView.as_view(),name='list_docente'),
     path('docente/<int:pk>/update',UpdateDocente.as_view(),name='docente_update'),
     path('docente/<int:pk>/delete',DeleteDocente.as_view(),name='docente_delete'),
-    path('pesquisar/',pesquisardocente, name='pesquisar'),
+    path('pesquisarDocente/',pesquisardocente, name='pesquisar_docente'),
 
 
 
@@ -51,7 +51,7 @@ urlpatterns = [
     path('aluno',ListAluno.as_view(),name='list_aluno'),
     path('aluno/<int:pk>/update',UpdateAluno.as_view(),name='aluno_update'),
     path('aluno/<int:pk>/delete',DeleteAluno.as_view(),name='aluno_delete'),
-    path('pesquisar/',pesquisaraluno, name='pesquisar'),
+    path('pesquisarAluno/',pesquisaraluno, name='pesquisar_aluno'),
     
     
     
@@ -59,6 +59,6 @@ urlpatterns = [
     path('disciplina',ListDisciplina.as_view(),name='list_disciplina'),
     path('disciplina/<int:pk>/update',UpdateDisciplina.as_view(),name='disciplina_update'),
     path('disciplina/<int:pk>/delete',DeleteDisciplina.as_view(),name='disciplina_delete'),
-    path('pesquisar/',pesquisardisciplina, name='pesquisar'),
+    path('pesquisarDisciplina/',pesquisardisciplina, name='pesquisar_disciplina'),
 
 ]

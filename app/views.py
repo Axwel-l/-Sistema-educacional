@@ -9,11 +9,7 @@ from django.views.generic.edit import (
     UpdateView,
     DeleteView
     )
-from django.views.generic import  ListView, DetailView
-# Create your views here.
-#Página inicial
-def home (request):
-    return render(request,'home.html')
+from django.views.generic import  ListView
 #Fromulario de cadastro
 def create (request):
     return render(request,'create.html')
@@ -53,15 +49,8 @@ def mudarsenha(request):
     return redirect('/login/')
 
 from .models import Aluno, Docente, Disciplina
-FAluno = Aluno
-FDocente=Docente
-FDisciplina=Disciplina
 
 
-def minha_view(request):
-    form1 = Aluno()
-    form2 = Docente()
-    return render(request, 'dashboard/home.html', {'form1': form1, 'form2': form2})
 # Docente
 class CriarDocente( CreateView):
     model=Docente
@@ -134,7 +123,7 @@ class ListDisciplina(ListView):
 class UpdateDisciplina(UpdateView):
     model =Disciplina
     template_name= 'dashboard/Disciplina/D_update.html'
-    fields = ('nome','data_nascimento')
+    fields = ('nome','data_criacao')
     success_url = reverse_lazy('list_disciplina')
 class DeleteDisciplina( DeleteView):
     model =Disciplina

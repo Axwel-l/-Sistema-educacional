@@ -1,11 +1,11 @@
 {% extends 'main.html' %}
-
+{% load bootstrap4 %}
 {% block content %}
 
-<h4>Adcionar Disciplina</h4>
-    <form action="" method="post">
+<form action="" method="post" style="max-width: 500px;margin: 0 auto;margin-top: 50px; background-color:gainsboro;padding: 45px;">
+    <h4>Adcionar Disciplina</h4>
         {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">Salvar</button>
+        {% bootstrap_form form %}
+        <button type="submit" class="btn btn-primary" style="width: 100%;margin-top: 20px" >Salvar</button>
     </form>
 {% endblock %}

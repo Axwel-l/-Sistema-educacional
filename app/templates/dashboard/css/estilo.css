@@ -1,0 +1,19 @@
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 50px; 
+    background-color:gainsboro;
+}
+body {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; /* Torna a altura igual à altura da viewport */
+    margin: 0; /* Remove margens padrão do corpo */
+}
+.d{
+    max-width: 500px;margin: 0 auto;margin-top: 50px; background-color:gainsboro;padding: 45px;
+}
+.b{
+    width: 100%;margin-top: 20px
+}

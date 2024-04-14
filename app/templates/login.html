@@ -4,7 +4,7 @@
 
         
 
-        <div class="login-container">
+        <div class="login-container col-5 mt-4 m-auto">
 
             {% if msg %}
                 <div class="alert {{class}}">
@@ -12,12 +12,9 @@
                 </div>
             {% endif %}
             {%csrf_token%}
-            <input type="text" name="user" id="user" placeholder="Usuário:" required>
-            <input type="password" name="password" id="password" placeholder="Senha:" required>
-            <input type="submit" value="Entrar" >
-            <a href="/redmudarsenha/">Esqueceu a senha?</a>
-            <span>ou</span>
-            <a href="/create">Criar uma conta</a>
+            <input type="text" name="user" id="user" placeholder="Usuário:" required class="form-control mt-4">
+            <input type="password" name="password" id="password" placeholder="Senha:" required class="form-control mt-4">
+            <input type="submit" value="Entrar" class="btn btn-primary mt-4 " >
         </div>
     </form>
 {% endblock content %}

@@ -1,14 +1,16 @@
 {% extends 'main.html' %}
 {% block content %}
     {% if request.user.is_authenticated%}
-    <br>
-    <a class="btn btn-primary" href="#" role="button">Direção</a>
-    <a class="btn btn-primary" href="{% url 'list_docente' %}" role="button">Docente</a>
-    <a class="btn btn-primary" href="{% url 'list_aluno' %}" role="button">Aluno(a)</a>
-    <a class="btn btn-primary" href="{% url 'list_disciplina' %}" role="button">Disciplina</a>
-    <a class="btn btn-primary" href="#" role="button">Turma</a>
-    {%else%}
-    Voce não tem acesso a essa area
-    {%endif%}
+
+    <div class="col-5 mt-4 m-auto"style="padding 20%">
+        <a style="padding-left: 20px;" class="btn btn-primary" href="{% url 'list_docente' %}" role="button">Docente</a>
+        <a style="padding-left: 20px;" class="btn btn-primary" href="{% url 'list_aluno' %}" role="button">Aluno(a)</a>
+        <a style="padding-left: 20px;" class="btn btn-primary" href="{% url 'list_disciplina' %}" role="button">Disciplina</a>
+        <a style="padding-left: 20px;" class="btn btn-primary" href="#" role="button">Ausente</a>
+        <a style="padding-left: 20px;" class="btn btn-primary" href="#" role="button">Ausente</a>
+        {%else%}
+        Voce não tem acesso a essa area
+        {%endif%}
+    </div>
 
 {% endblock content %}

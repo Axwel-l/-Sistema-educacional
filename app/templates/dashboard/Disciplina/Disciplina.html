@@ -1,49 +1,50 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<h4>Disciplina
-    &nbsp;|&nbsp;
-    <a href="{% url 'create_disciplina' %}"> Incluir</a>
-    </h4>
+<div class="col-6 mt-4 m-auto padding 20%" style="justify-content: center; background-color: gainsboro; ">
+        <h4 style="margin-left: 10px;"> -Disciplina- 
+        &nbsp;|&nbsp;
+        <a href="{% url 'create_disciplina' %}"> Incluir</a>
+        <br>
+        <form method="GET" action="{% url 'pesquisar_disciplina' %}" style="padding: 20px;">
+            <input type="text" name="q" placeholder="Pesquisar..." style="height: 40px; width: 70%;">
+            <button type="submit" style="height:40px; width: 20%;" class="btn btn-primary">Pesquisar</button>
+        </form>
+        {% if query %}    
+            {% if resultados %}
+                <h2>- Resultados para "{{ query }}":</h2>
+                <ul style="list-style: none;">
+                    {% for disciplina in resultados %}
+                        <li>
+                            {{disciplina.nome}}
+                            &nbsp;|&nbsp;
+                            {{disciplina.data_criacao}}
+                            &nbsp;|&nbsp;
+                            <a href="{% url 'disciplina_update' disciplina.id %}"> Editar</a>
+            
+                            &nbsp;|&nbsp;
+                            <a href="{% url 'disciplina_delete' disciplina.id %}"> Excluir</a>
+                        </li>
 
-    <form method="GET" action="{% url 'pesquisar' %}">
-        <input type="text" name="q" placeholder="Pesquisar...">
-        <button type="submit">Pesquisar</button>
-    </form>
-    {% if query %}    
-        {% if resultados %}
-            <h2>Resultados para "{{ query }}":</h2>
-            <ul>
-                {% for disciplina in resultados %}
-                    <li>
-                        {{disciplina.nome}}
-                        &nbsp;|&nbsp;
-                        {{disciplina.data_criacao}}
-                        &nbsp;|&nbsp;
-                        <a href="{% url 'disciplina_update' disciplina.id %}"> Editar</a>
-        
-                        &nbsp;|&nbsp;
-                        <a href="{% url 'disciplina_delete' disciplina.id %}"> Excluir</a>
-                    </li>
-
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>Nenhum resultado encontrado para "{{ query }}".</p>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <h4 style="margin-top: 20px;"><strong>Nenhum resultado encontrado para "{{ query }}".</strong></h4>
+            {% endif %}
         {% endif %}
-    {% endif %}
-    <ul>
-        {% for disciplina in disciplinas %}
-            <li>
-                {{disciplina.nome}}
-                &nbsp;|&nbsp;
-                {{disciplina.data_criacao}}
-                &nbsp;|&nbsp;
-                <a href="{% url 'disciplina_update' disciplina.id %}"> Editar</a>
+        <ul style="list-style: none; font-size: large;" >
+            {% for disciplina in disciplinas %}
+                <li>-
+                    {{disciplina.nome}}
+                    &nbsp;|&nbsp;
+                    {{disciplina.data_criacao}}
+                    &nbsp;|&nbsp;
+                    <a href="{% url 'disciplina_update' disciplina.id %}"> Editar</a>
 
-                &nbsp;|&nbsp;
-                <a href="{% url 'disciplina_delete' disciplina.id %}"> Excluir</a>
-            </li>
-        {% endfor %}
-    </ul>
+                    &nbsp;|&nbsp;
+                    <a href="{% url 'disciplina_delete' disciplina.id %}"> Excluir</a>
+                </li>
+            {% endfor %}
+        </ul>
+</div>
 {% endblock %}

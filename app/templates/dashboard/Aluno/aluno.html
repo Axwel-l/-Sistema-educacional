@@ -1,53 +1,54 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<h4>Aluno 
-    &nbsp;|&nbsp;
-    <a href="{% url 'create_aluno' %}"> Incluir</a>
-    </h4>
+<div class="col-6 mt-4 m-auto padding 20%" style="justify-content: center; background-color: gainsboro; ">
+        <h4 style="margin-left: 10px;"> -Aluno- 
+        &nbsp;|&nbsp;
+        <a href="{% url 'create_aluno' %}"> Incluir</a>
+        <br>
+        <form method="GET" action="{% url 'pesquisar_aluno' %}" style="padding: 20px;">
+            <input type="text" name="q" placeholder="Pesquisar..." style="height: 40px; width: 70%;">
+            <button type="submit" style="height:40px; width: 20%;" class="btn btn-primary">Pesquisar</button>
+        </form>
+        {% if query %}    
+            {% if resultados %}
+                <h2>- Resultados para "{{ query }}":</h2>
+                <ul style="list-style: none;">
+                    {% for aluno in resultados %}
+                        <li>
+                            {{aluno.nome}}
+                            &nbsp;|&nbsp;
+                            {{aluno.cpf}}
+                            &nbsp;|&nbsp;
+                            {{aluno.data_nascimento}}
+                            &nbsp;|&nbsp;
+                            <a href="{% url 'aluno_update' aluno.id %}"> Editar</a>
+            
+                            &nbsp;|&nbsp;
+                            <a href="{% url 'aluno_delete' aluno.id %}"> Excluir</a>
+                        </li>
 
-    <form method="GET" action="{% url 'pesquisar' %}">
-        <input type="text" name="q" placeholder="Pesquisar...">
-        <button type="submit">Pesquisar</button>
-    </form>
-    {% if query %}    
-        {% if resultados %}
-            <h2>Resultados para "{{ query }}":</h2>
-            <ul>
-                {% for aluno in resultados %}
-                    <li>
-                        {{aluno.nome}}
-                        &nbsp;|&nbsp;
-                        {{aluno.cpf}}
-                        &nbsp;|&nbsp;
-                        {{aluno.data_nascimento}}
-                        &nbsp;|&nbsp;
-                        <a href="{% url 'aluno_update' aluno.id %}"> Editar</a>
-        
-                        &nbsp;|&nbsp;
-                        <a href="{% url 'aluno_delete' aluno.id %}"> Excluir</a>
-                    </li>
-
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>Nenhum resultado encontrado para "{{ query }}".</p>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <h4 style="margin-top: 20px;"><strong>Nenhum resultado encontrado para "{{ query }}".</strong></h4>
+            {% endif %}
         {% endif %}
-    {% endif %}
-    <ul>
-        {% for aluno in alunos %}
-            <li>
-                {{aluno.nome}}
-                &nbsp;|&nbsp;
-                {{aluno.cpf}}
-                &nbsp;|&nbsp;
-                {{aluno.data_nascimento}}
-                &nbsp;|&nbsp;
-                <a href="{% url 'aluno_update' aluno.id %}"> Editar</a>
+        <ul style="list-style: none; font-size: large;" >
+            {% for aluno in alunos %}
+                <li>-
+                    {{aluno.nome}}
+                    &nbsp;|&nbsp;
+                    {{aluno.cpf}}
+                    &nbsp;|&nbsp;
+                    {{aluno.data_nascimento}}
+                    &nbsp;|&nbsp;
+                    <a href="{% url 'aluno_update' aluno.id %}"> Editar</a>
 
-                &nbsp;|&nbsp;
-                <a href="{% url 'aluno_delete' aluno.id %}"> Excluir</a>
-            </li>
-        {% endfor %}
-    </ul>
+                    &nbsp;|&nbsp;
+                    <a href="{% url 'aluno_delete' aluno.id %}"> Excluir</a>
+                </li>
+            {% endfor %}
+        </ul>
+</div>
 {% endblock %}
