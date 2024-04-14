@@ -30,7 +30,7 @@ DATABASES = {<br>
         'PASSWORD':'admin',<br>
         'HOST':'localhost',<br>
     }<br>
-}<br>
+}
 
 2. Migrar o Banco de Dados<br>
 Depois de configurar o banco de dados, você precisa aplicar as migrações:<br>
