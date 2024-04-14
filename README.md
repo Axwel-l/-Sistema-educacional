@@ -18,7 +18,7 @@ git clone Axwel-l/-Sistema-educacional<br>
 *pip install -r requirements.txt<br>
 
 <br>
-##Configuração<br>
+#Configuração<br>
 1. Banco de Dados<br>
 Edite o arquivo settings.py no diretório sistema e ajuste as configurações do banco de dados de acordo com o que for usar (no caso é o postegres, em que sera necessario intalar as extensões do banco que deseja usar ):<br>
 
